@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 在 app.js 之前添加 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- 添加 Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-200 min-h-screen font-['Poppins']"
+  >
+    <div class="container mx-auto p-6 max-w-2xl">
+      <!-- 標題區域加入動畫效果 -->
+      <h1
+        class="text-5xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 hover:scale-105 transition-transform duration-300"
+      >
+        To-Do List
+      </h1>
+
+      <!-- 任務類型選擇 -->
+      <div class="mb-6">
+        <select
+          id="task-type"
+          class="bg-gray-700/50 text-white rounded-lg p-3 w-full backdrop-blur-sm border border-gray-600/50 hover:border-purple-500/50 transition-all duration-300"
+        >
+          <option value="regular">Regular Task</option>
+          <option value="daily">Daily Task</option>
+        </select>
+      </div>
+
+      <!-- 輸入區 -->
+      <div
+        class="flex gap-3 items-center bg-gray-800/50 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300"
+      >
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Add a task..."
+          class="flex-grow border border-gray-600/50 bg-gray-700/50 text-white rounded-lg p-3 focus:ring-2 focus:ring-purple-500/50 focus:border-transparent focus:outline-none transition-all duration-300 placeholder-gray-400"
+        />
+        <button
+          id="add-task-btn"
+          class="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg px-8 py-3 font-semibold hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+        >
+          Add
+        </button>
+      </div>
+
+      <!-- 任務列表 -->
+      <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4 text-purple-300">Regular Tasks</h2>
+        <ul id="regular-task-list" class="space-y-4"></ul>
+
+        <h2 class="text-2xl font-bold mb-4 mt-10 text-purple-300">
+          Daily Tasks
+        </h2>
+        <ul id="daily-task-list" class="space-y-4"></ul>
+      </div>
+
+      <!-- 在 container div 內的開頭添加 -->
+      <div class="mb-8">
+        <div
+          class="bg-gray-800/50 rounded-xl p-6 shadow-lg backdrop-blur-sm border border-gray-700/50"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <button
+              id="prev-month"
+              class="text-purple-400 hover:text-purple-300"
+            >
+              ← Previous
+            </button>
+            <h2
+              id="calendar-header"
+              class="text-2xl font-bold text-purple-300"
+            ></h2>
+            <button
+              id="next-month"
+              class="text-purple-400 hover:text-purple-300"
+            >
+              Next →
+            </button>
+          </div>
+          <div class="grid grid-cols-7 gap-1">
+            <div class="text-center text-gray-400">Sun</div>
+            <div class="text-center text-gray-400">Mon</div>
+            <div class="text-center text-gray-400">Tue</div>
+            <div class="text-center text-gray-400">Wed</div>
+            <div class="text-center text-gray-400">Thu</div>
+            <div class="text-center text-gray-400">Fri</div>
+            <div class="text-center text-gray-400">Sat</div>
+          </div>
+          <div id="calendar-grid" class="grid grid-cols-7 gap-1 mt-2"></div>
+        </div>
+      </div>
+
+      <!-- 在日曆區域後面添加統計圖表區域 -->
+      <div class="mt-8 transform transition-all duration-300">
+        <div
+          class="bg-gray-800/50 rounded-xl p-6 shadow-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 animate-fadeIn"
+        >
+          <div class="flex justify-between items-center mb-6">
+            <h2
+              class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+            >
+              Task Statistics
+            </h2>
+            <select
+              id="chart-type"
+              class="bg-gray-700/50 text-white rounded-lg p-3 text-sm backdrop-blur-sm border border-gray-600/50 hover:border-purple-500/50 transition-all duration-300"
+            >
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+          <div class="w-full h-64 animate-slideUp">
+            <canvas id="taskChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

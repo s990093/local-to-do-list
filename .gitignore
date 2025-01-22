@@ -1,0 +1,44 @@
+# Dependencies
+/node_modules
+/vendor
+package-lock.json
+composer.lock
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+/dist
+/build
+/public/hot
+/public/storage
+
+# Cache
+.cache/
+.temp/
+*.cache
+
+# Testing
+/coverage
+.phpunit.result.cache
+
+# Misc
+Thumbs.db
+*.swp
+*.swo
+*~ 
